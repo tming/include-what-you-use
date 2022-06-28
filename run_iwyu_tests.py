@@ -23,6 +23,9 @@ import logging
 logging.basicConfig(level=logging.INFO)
 import posixpath
 from fnmatch import fnmatch
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+print('%s\n' % (os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+
 import iwyu_test_util
 
 
