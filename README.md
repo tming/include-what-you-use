@@ -71,12 +71,20 @@ To set up an environment for building:
       # This example uses the Makefile generator, but anything should work.
       iwyu/include-what-you-use$ cd ..
       iwyu$ mkdir build && cd build
-
+      
       # For IWYU 0.10/Clang 6 and earlier
       iwyu/build$ cmake -G "Unix Makefiles" -DIWYU_LLVM_ROOT_PATH=/usr/lib/llvm-6.0 ../include-what-you-use
-
+      
       # For IWYU 0.11/Clang 7 and later
       iwyu/build$ cmake -G "Unix Makefiles" -DCMAKE_PREFIX_PATH=/usr/lib/llvm-7 ../include-what-you-use
+      
+      # For windows
+      # CMAKE_BUILD_TYPE same with llvm version
+      # to ensure path with /, not \
+      set "llvm_dir=path/to/llvm"
+      cmake -G "Ninja" -DLLVM_DIR=%llvm_dir%/build/lib/cmake/llvm -DClang_DIR=%llvm_dir%/build/lib/cmake/clang -DCMAKE_BUILD_TYPE=Release ../
+      ninja
+      
 
   (substitute the `llvm-6.0` or `llvm-7` suffixes with the actual version compatible with your IWYU branch)
 
